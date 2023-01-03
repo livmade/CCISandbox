@@ -8,8 +8,8 @@ jobs:
     executor:
       name: win/server-2019
     steps:
-      - run:
-          command: path
+      - run: |
+          echo "Hi I'm on Runners!"
       - run: 
           command: choco install -y cmake --installargs "ADD_CMAKE_TO_PATH=System"
     #  - run:
