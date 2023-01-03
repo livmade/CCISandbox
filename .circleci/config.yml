@@ -1,23 +1,36 @@
 version: 2.1
 
-orbs:
-  win: circleci/windows@4.1.1
-
 jobs:
-  quicktest:
-    executor:
-      name: win/server-2019
+  build:
+    docker:
+      - image: cimg/base:2020.01
+    environment: 
+      AWS_ACCESS_KEY_ID: TESTING_ENV
     steps:
-      - run: |
-          echo "Hi I'm on Runners!"
-      - run: 
-          command: choco install -y cmake --installargs "ADD_CMAKE_TO_PATH=System"
-    #  - run:
-    #      command: cmake --preset debug --log-context -G "Visual Studio 17 2022" -DSTARSHIP_USE_EXTERNAL_ESBUILD=OFF -DSTARSHIP_USE_EXTERNAL_NODEJS=OFF -DSTARSHIP_USE_EXTERNAL_RAPIDJSON=OFF
-
-
+      - checkout
+      - run: echo 'export listall="ls -a"' >> $BASH_ENV
+      - run: echo 'hello, world!'
+#       - run: echo 'export AWS_ACCESS_KEY_ID=TESTING_ENV' >> $BASH_ENV
+      - run: echo ${AWS_ACCESS_KEY_ID}
+      
+  test:
+    machine:
+      image: ubuntu-2004:202201-01
+      docker_layer_caching: true
+    steps:
+    - checkout
+    - run: echo $CIRCLE_WORKING_DIRECTORY    
+  test1:
+    machine:
+      image: ubuntu-2004:202201-01
+    steps:
+      - checkout
+      - run: echo $CIRCLE_WORKING_DIRECTORY
 
 workflows:
-  wintest:
+  version: 2
+  my_workflow:
     jobs:
-    - quicktest
+      - build
+      - test
+      - test1
