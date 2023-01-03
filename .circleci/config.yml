@@ -1,1 +1,23 @@
+version: 2.1
 
+orbs:
+  win: circleci/windows@4.1.1
+
+jobs:
+  quicktest:
+    executor:
+      name: win/server-2019
+    steps:
+      - run:
+          command: path
+      - run: 
+          command: choco install -y cmake --installargs "ADD_CMAKE_TO_PATH=System"
+    #  - run:
+    #      command: cmake --preset debug --log-context -G "Visual Studio 17 2022" -DSTARSHIP_USE_EXTERNAL_ESBUILD=OFF -DSTARSHIP_USE_EXTERNAL_NODEJS=OFF -DSTARSHIP_USE_EXTERNAL_RAPIDJSON=OFF
+
+
+
+workflows:
+  wintest:
+    jobs:
+    - quicktest
