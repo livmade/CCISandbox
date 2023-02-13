@@ -1,36 +1,26 @@
 version: 2.1
-
-jobs:
-  build:
-    docker:
-      - image: cimg/base:2020.01
-    environment: 
-      AWS_ACCESS_KEY_ID: TESTING_ENV
-    steps:
-      - checkout
-      - run: echo 'export listall="ls -a"' >> $BASH_ENV
-      - run: echo 'hello, world!'
-#       - run: echo 'export AWS_ACCESS_KEY_ID=TESTING_ENV' >> $BASH_ENV
-      - run: echo ${AWS_ACCESS_KEY_ID}
-      
-  test:
-    machine:
-      image: ubuntu-2004:202201-01
-      docker_layer_caching: true
-    steps:
-    - checkout
-    - run: echo $CIRCLE_WORKING_DIRECTORY    
-  test1:
-    machine:
-      image: ubuntu-2004:202201-01
-    steps:
-      - checkout
-      - run: echo $CIRCLE_WORKING_DIRECTORY
+orbs:
+  python: circleci/python@2.1.1
 
 workflows:
-  version: 2
-  my_workflow:
+  sanity_memix_web_workflow:
     jobs:
-      - build
-      - test
-      - test1
+      - sanity_memix_web_job
+
+jobs:
+  sanity_memix_web_job:
+    docker:
+      - image: cimg/python:3.10.5
+
+    steps:
+      - checkout
+      - run: 
+          name: Install Paver
+          command: |
+            pip install -U Paver
+###      - run:
+###          name: Run Paver Command
+   ###       command: |
+      ###      paver run_all web prod
+    
+
