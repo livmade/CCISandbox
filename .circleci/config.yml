@@ -18,9 +18,9 @@ jobs:
           name: Install Paver
           command: |
             pip install -U Paver
-###      - run:
-###          name: Run Paver Command
-   ###       command: |
-      ###      paver run_all web prod
+      - run:   
+         name: Run Paver Command       
+         command: |      
+          paver run_all web prod
     
 
