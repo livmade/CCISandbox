@@ -8,14 +8,10 @@ workflows:
 jobs:
   yjit-in-here:
     docker:
-      - image: cimg/ruby:3.2.1
+      - image: srockstyle/ruby-3.1-enable-yjit
 
     steps:
       - checkout
-      - run:
-          name: Install yjit
-          command: |
-            RUBY_CONFIGURE_OPTS="--enable-yjit" rbenv install 3.2.0 -force
       - run:
           name: Yjit Installed?
           command: |
