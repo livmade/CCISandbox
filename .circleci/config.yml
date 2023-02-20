@@ -13,12 +13,6 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Hello World
-          command: |
-            ruby puts: "Hello World!"
-      - run:
           name: Yjit Installed?
           command: |
             ruby -v --yjit
-    
-
