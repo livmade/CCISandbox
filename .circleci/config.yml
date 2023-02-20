@@ -1,30 +1,24 @@
 version: 2.1
-orbs:
-  python: circleci/python@2.1.1
 
 workflows:
-  sanity_memix_web_workflow:
+  workflow-uno:
     jobs:
-      - sanity_memix_web_job
+      - yjit-in-here
 
 jobs:
-  sanity_memix_web_job:
+  yjit-in-here:
     docker:
-      - image: cimg/python:3.10.5
+      - image: srockstyle/ruby-3.1-enable-yjit
 
     steps:
       - checkout
       - run:
-          name: Install Dependencies
+          name: Hello World
           command: |
-            pip install -r requirements.txt
-      - run: 
-          name: Install Paver
+            puts: "Hello World!"
+      - run:
+          name: Yjit Installed?
           command: |
-            pip install -U Paver
-      - run:   
-         name: Run Paver Command       
-         command: |      
-          paver run_all web prod
+            ruby -v --yjit
     
 
