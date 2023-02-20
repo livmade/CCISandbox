@@ -8,7 +8,7 @@ workflows:
 jobs:
   yjit-in-here:
     docker:
-      - image: srockstyle/ruby-3.1-enable-yjit
+      - image: cimg/ruby:3.2.1
 
     steps:
       - checkout
