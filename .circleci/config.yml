@@ -15,7 +15,7 @@ jobs:
       - run:
           name: Hello World
           command: |
-            puts: "Hello World!"
+            ruby puts: "Hello World!"
       - run:
           name: Yjit Installed?
           command: |
