@@ -13,6 +13,10 @@ jobs:
     steps:
       - checkout
       - run:
+          name: Install yjit
+          command: |
+            ruby RUBY_CONFIGURE_OPTS="--enable-yjit" rbenv install 3.2.0 -force
+      - run:
           name: Yjit Installed?
           command: |
             ruby -v --yjit
