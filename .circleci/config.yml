@@ -1,18 +1,12 @@
 version: 2.1
 
 workflows:
-  workflow-uno:
+  build-workflow:
     jobs:
-      - yjit-in-here
-
+      - runner
 jobs:
-  yjit-in-here:
-    docker:
-      - image: srockstyle/ruby-3.1-enable-yjit
-
+  runner:
+    machine: true
+    resource_class: livmade/boop
     steps:
-      - checkout
-      - run:
-          name: Yjit Installed?
-          command: |
-            ruby -v --yjit
+      - run: echo "Hi I'm on Runners!"
