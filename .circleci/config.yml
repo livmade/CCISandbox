@@ -10,3 +10,4 @@ jobs:
     resource_class: livmade/boop
     steps:
       - run: echo "Hi I'm on Runners!"
+      - run: whoami 
