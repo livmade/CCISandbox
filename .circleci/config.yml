@@ -15,6 +15,6 @@ jobs:
           command: |
             setx username $username
             setx password $password
-            $credential = New-Object System.Management.Automation.PSCredential (username, password)
+            $credential = New-Object System.Management.Automation.PSCredential ("username", "password")
             whoami
           shell: powershell.exe
