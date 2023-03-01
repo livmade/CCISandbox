@@ -13,6 +13,6 @@ jobs:
     steps:
       - run: 
           command: |
-            echo $Rain
+            echo %Rain%
             whoami
           shell: powershell.exe
