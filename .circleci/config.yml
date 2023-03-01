@@ -13,7 +13,6 @@ jobs:
     steps:
       - run: 
           command: |
-            setx /u $username /p $password
-            $credential = New-Object System.Management.Automation.PSCredential ("$username", "$password")
+            echo $Rain
             whoami
           shell: powershell.exe
