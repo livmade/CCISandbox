@@ -13,6 +13,6 @@ jobs:
     steps:
       - run: 
           command: |
-            $credential = New-Object System.Management.Automation.PSCredential ($username, $password)
-            echo whoami
+            $credential = New-Object System.Management.Automation.PSCredential ($Env:username, $Env:password)
+            whoami
           shell: powershell.exe
