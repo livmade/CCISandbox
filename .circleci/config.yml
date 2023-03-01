@@ -3,12 +3,18 @@ version: 2.1
 workflows:
   test-login:
     jobs:
-      - runner
+      - creds
 jobs:
-  runner:
-    machine: true
-    resource_class: livmade/windows
+  creds:
+    executor: win/server-2022
     steps:
       - run: 
-          command: $credential = Get-Credential # You will be prompted for the username and password here.
+          command: |
+            $username = 'Your.Username'
+            $password = 'Password in plain text'
+            $securePassword = ConvertTo-SecureString $password -AsPlainText -Force 
+            $credential = New-Object System.Management.Automation.PSCredential ($username, $securePassword)
+            
+            Invoke-Command -ComputerName localhost -Credential $credential 
+            
           shell: powershell.exe
