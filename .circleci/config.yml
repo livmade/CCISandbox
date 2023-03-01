@@ -1,19 +1,14 @@
-version: 2.1
 
-setup: true
+version: 2.1 # Use version 2.1 to enable Orb usage.
 
 orbs:
-  continuation: circleci/continuation@0.1.3
+  win: circleci/windows@5.0 # The Windows orb gives you everything you need to start using the Windows executor.
 
 jobs:
-  setup:
-    executor: continuation/default
-    steps:
-      - checkout
-      - continuation/continue:
-          configuration_path: .circleci/continue_config.yml
+  build: # name of your job
+    executor: win/default # executor type
 
-workflows:
-  setup:
-    jobs:
-      - setup
+    steps:
+      # Commands are run in a Windows virtual machine environment
+      - checkout
+      - run: Write-Host 'Hello, Windows'
