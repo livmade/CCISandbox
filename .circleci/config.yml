@@ -1,5 +1,5 @@
 version: 2.1
-
+ 
 orbs:
   win: circleci/windows@5.0
 
@@ -13,9 +13,8 @@ jobs:
     steps:
       - run: 
           command: |
-            $username # project env var
-            $password 
-            $securePassword = ConvertTo-SecureString $password -AsPlainText -Force 
+            $username
+            $password  
             $credential = New-Object System.Management.Automation.PSCredential ($username, $securePassword)
             
             Invoke-Command -ComputerName localhost -Credential $credential 
