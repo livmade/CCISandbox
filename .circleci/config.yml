@@ -7,7 +7,7 @@ jobs:
   build:
     executor:
       name: win/default
-      shell: cmd.exe
+      shell: powershell.exe
     steps:
       - run: |
           echo 'MY_VAR_1="one"' >> /tmp/my_env.bat
