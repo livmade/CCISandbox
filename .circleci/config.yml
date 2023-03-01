@@ -1,13 +1,19 @@
 version: 2.1
 
-workflows:
-  build-workflow:
-    jobs:
-      - runner
+setup: true
+
+orbs:
+  continuation: circleci/continuation@0.1.2
+
 jobs:
-  runner:
-    machine: true
-    resource_class: livmade/boop
+  setup:
+    executor: continuation/default
     steps:
-      - run: echo "Hi I'm on Runners!"
-      - run: whoami 
+      - checkout
+      - continuation/continue:
+          configuration_path: .circleci/continue_config.yml
+
+workflows:
+  setup:
+    jobs:
+      - setup
