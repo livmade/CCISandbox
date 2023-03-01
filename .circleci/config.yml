@@ -1,23 +1,18 @@
 version: 2.1
 
-jobs:
-  build:
-    docker:
-     - image: cimg/base:2022.05
-       environment:
-          Rain: Acid
-          command: |
-            echo $Rain
-    steps:
-      - run: 
-          name: Echo Env Var
-          command: echo $Rain
-      - run:
-          name: Is this Project or Job Env Var?
-          command: echo $Rain
-
+orbs:
+  win: circleci/windows@5.0
 
 workflows:
-  hello:
+  test-login:
     jobs:
-      - build
+      - creds
+jobs:
+  creds:
+    executor: win/server-2022
+    steps:
+      - run: 
+          command: |
+            $credential = New-Object System.Management.Automation.PSCredential ($username, $password)
+            echo whoami
+          shell: powershell.exe
