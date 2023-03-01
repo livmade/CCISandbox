@@ -1,7 +1,7 @@
 version: 2.1
 
 workflows:
-  build-workflow:
+  test-login:
     jobs:
       - runner
 jobs:
@@ -9,4 +9,6 @@ jobs:
     machine: true
     resource_class: livmade/windows
     steps:
-      - run: echo "Hi I'm on Runners!"
+      - run: 
+          command: $credential = Get-Credential # You will be prompted for the username and password here.
+          shell: powershell.exe
