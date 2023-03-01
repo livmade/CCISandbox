@@ -11,6 +11,9 @@ jobs:
           command: echo $Rain
           environment:
             Rain: Acid
+      - run:
+          name: Is this Project or Job Env Var?
+          command: echo $Rain
             
 
 workflows:
