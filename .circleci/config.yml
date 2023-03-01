@@ -8,9 +8,10 @@ jobs:
     steps:
       - run: 
           name: Echo Env Var
-          command: |
-            Rain= "Acid"
-            echo $Rain
+          command: echo $Rain
+          environment:
+            Rain: Acid
+            
 
 workflows:
   hello:
