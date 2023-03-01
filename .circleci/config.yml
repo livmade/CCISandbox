@@ -1,18 +1,26 @@
 version: 2.1
 
 orbs:
-  win: circleci/windows@5.0
+  win: circleci/windows@5.0.0
 
-workflows:
-  test-login:
-    jobs:
-      - creds
 jobs:
-  creds:
-    executor: win/server-2022
+  build:
+    executor:
+      name: win/default
+      shell: cmd.exe
     steps:
-      - run: 
-          command: |
-            echo %Rain%
-            whoami
-          shell: powershell.exe
+      - run: |
+          echo 'MY_VAR_1="one"' >> /tmp/my_env.bat
+          echo 'MY_VAR_2="two"' >> /tmp/my_env.bat
+      - run: |
+          call /tmp/my_env.bat
+          # run command here 
+      - run: |
+          call /tmp/my_env.bat
+          # run other commands here
+
+
+workflow:
+  workflowuno:
+    jobs:
+      - build
