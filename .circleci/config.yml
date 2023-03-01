@@ -9,6 +9,7 @@ jobs:
       - run: 
           name: Echo Env Var
           command: |
+            Rain = "Acid"
             echo $Rain
 
 workflows:
