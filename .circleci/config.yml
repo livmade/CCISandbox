@@ -1,22 +1,21 @@
 version: 2.1
- 
-orbs:
-  win: circleci/windows@5.0
 
-workflows:
-  test-login:
-    jobs:
-      - creds
 jobs:
-  creds:
-    executor: win/server-2022
+  build:
+    docker:
+     - image: cimg/base:2022.05
+       environment:
+          Rain: Acid
     steps:
       - run: 
-          command: |
-            $userName = $username
-            $credential = New-Object System.Management.Automation.PSCredential ($userName, $password)
+          name: Echo Env Var
+          command: echo $Rain
+      - run:
+          name: Is this Project or Job Env Var?
+          command: echo $Rain
 
-            Invoke-Command -ComputerName localhost -Credential $credential 
-            echo whoami
 
-          shell: powershell.exe
+workflows:
+  hello:
+    jobs:
+      - build
