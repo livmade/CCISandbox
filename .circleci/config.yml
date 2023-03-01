@@ -1,14 +1,14 @@
-
-version: 2.1 # Use version 2.1 to enable Orb usage.
-
-orbs:
-  win: circleci/windows@5.0 # The Windows orb gives you everything you need to start using the Windows executor.
+# CircleCI configuration file
+version: 2.1
 
 jobs:
-  build: # name of your job
-    executor: win/default # executor type
-
+  build:
+    docker:
+     - image: cimg/base:2022.05
     steps:
-      # Commands are run in a Windows virtual machine environment
-      - checkout
-      - run: Write-Host 'Hello, Windows'
+        - run: echo "Hello, it me"
+
+workflows:
+  hello:
+    jobs:
+      - build
