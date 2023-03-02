@@ -2,13 +2,18 @@
 version: 2.1
 
 jobs:
-  build:
+  jfrog-test-test-test:
     docker:
-     - image: cimg/base:2022.05
+      - image: 'circleci/node:10'
     steps:
-        - run: echo $Boop
+      - checkout
+      - artifactory/install
+      - artifactory/configure
+      - artifactory/build-integration
+orbs:
+  artifactory: circleci/artifactory@1.0.0
 
 workflows:
   hello:
     jobs:
-      - build
+      - jfrog-test-test-test
