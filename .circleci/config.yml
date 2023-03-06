@@ -1,19 +1,14 @@
+# CircleCI configuration file
 version: 2.1
+
 jobs:
-  upload-artifact:
+  newYob:
     docker:
-      - image: cimg/openjdk:19.0.1
-        auth:
-          username: mydockerhub-user
-          password: $DOCKERHUB_PASSWORD  # context / project UI env-var reference
-    working_directory: ~/repo
+     - image: cimg/base:2022.05
     steps:
-      - checkout
-      - run: mvn dependency:go-offline
-      - run:
-          name: maven build
-          command: |
-            mvn clean install
-      - run:
-          name: Install JFrog CLI
-          command: curl -fL https://getcli.jfrog.io | sh
+        - run: echo "Hello, it me"
+
+workflows:
+  hello:
+    jobs:
+      - newYob
