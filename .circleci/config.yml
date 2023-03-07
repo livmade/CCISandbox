@@ -10,7 +10,7 @@ jobs:
     - run: echo "Hello, it's me"
     - run: 
         command: |
-          python print("Hello, CircleCI!")
+          python --version
     
 workflows:
   newWerkWerkWerk:
