@@ -1,12 +1,17 @@
 # CircleCI configuration file
 version: 2.1
 
-orbs:
-  infrastructure: planetfitness/infrastructure@2.9.2
+jobs:
+  newYobPython:
+    docker:
+    -  image: circleci/python:3.10.5
+    steps:
+    - run: 
+        command: |
+          python --version
+  newBaseYob:
+    docker:
+      -  image: cimg/base:2022.05
+    steps:
+    - run: echo "Hello, it's me"
 
-workflows:
-  use-my-orb:
-    jobs:
-      - infrastructure/hello
-
-### Need commit to update
