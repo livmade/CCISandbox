@@ -1,8 +1,9 @@
 # CircleCI configuration file
 version: 2.1
 
+version: '2.1'
 orbs:
-  infrastructure: planetfitness/infrastructure@1.2.3
+  infrastructure: planetfitness/infrastructure@2.9.2
 workflows:
   use-my-orb:
     jobs:
