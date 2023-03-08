@@ -1,26 +1,9 @@
 # CircleCI configuration file
 version: 2.1
 
-jobs:
-  newYobPython:
-    docker:
-    -  image: cimg/python:3.10.5
-    steps:
-    - run: 
-        command: |
-          python --version
-  newBaseYob:
-    docker:
-      -  image: cimg/base:2022.05
-    steps:
-    - run: echo "Hello, it's me"
-    - run: 
-        command: |
-          python --version
-### ^^^ This is just to verify that it is not connected to the python image
-    
+orbs:
+  infrastructure: planetfitness/infrastructure@1.2.3
 workflows:
-  newWerkWerkWerk:
+  use-my-orb:
     jobs:
-      - newYobPython
-      - newBaseYob
+      - infrastructure/hello
