@@ -11,6 +11,9 @@ jobs:
           python -c 'print("Hello, from CircleCI")'
 
 workflows:
+  test-Workflow:
+    jobs:
+      - newYobPython
   one-minute:
     triggers:
       - schedule:
@@ -19,6 +22,4 @@ workflows:
           branches:
             only:
               - main
-    jobs:
-      - newYobPython
 
