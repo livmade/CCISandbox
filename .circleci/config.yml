@@ -1,13 +1,31 @@
+# CircleCI configuration file
 version: 2.1
 
 jobs:
-  hello-job:
+  testJob:
     docker:
-      - image: cimg/base:2023:03 # the primary container, where your job's commands are run
+    - image: cimg/base:2023.03
     steps:
-      - run: echo "hello world" # run the `echo` command
+      - run: echo "Hello, from CircleCI!"
+  newYobPython:
+    docker:
+    -  image: cimg/python:3.10.5
+    steps:
+    - run: 
+        command: |
+          python -c 'print("Hello, from Python!")'
 
 workflows:
-  my-workflow:
+  workflowtest:
     jobs:
-      - hello-job
+     - testJob
+  oneMinute:
+    triggers:
+      - schedule:
+          cron: "1,2,3,4 * * * *"
+          filters:
+            branches:
+              only:
+                - main
+    jobs:
+      - newYobPython
