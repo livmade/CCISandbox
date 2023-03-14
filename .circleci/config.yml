@@ -8,15 +8,9 @@ jobs:
     steps:
     - run: 
         command: |
-          python --version
-  newBaseYob:
-    docker:
-      -  image: cimg/base:2022.05
-    steps:
-    - run: echo "Hello, it's me"
+          python -c 'print("Hi")'
 
 workflows:
   newWerkWerkWerk:
     jobs:
       - newYobPython
-      - newBaseYob
