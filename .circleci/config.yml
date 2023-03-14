@@ -8,18 +8,16 @@ jobs:
     steps:
     - run: 
         command: |
-          python -c 'print("Hello, from CircleCI")'
+          python -c 'print("Hi")'
 
 workflows:
-  version: 2
-  one-minute:
+  oneMinute:
     triggers:
       - schedule:
-         cron: "1,2,3,4 * * * * "
-         filters:
-          branches:
-            only:
-              - main
+          cron: "1,2,3,4 * * * *"
+          filters:
+            branches:
+              only:
+                - main
     jobs:
       - newYobPython
-
