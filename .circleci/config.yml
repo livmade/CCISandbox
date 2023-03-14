@@ -2,6 +2,11 @@
 version: 2.1
 
 jobs:
+  testJob:
+    docker:
+    - image: cimg/base:2023.03
+    steps:
+      - run: echo "Hello, from CircleCI!"
   newYobPython:
     docker:
     -  image: cimg/python:3.10.5
@@ -12,5 +17,15 @@ jobs:
 
 workflows:
   workflowtest:
+    jobs:
+     - testJob
+  oneMinute:
+    triggers:
+      - schedule:
+          cron: "1,2,3,4 * * * *"
+          filters:
+            branches:
+              only:
+                - main
     jobs:
       - newYobPython
