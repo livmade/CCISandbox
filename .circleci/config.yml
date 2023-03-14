@@ -11,14 +11,16 @@ jobs:
           python -c 'print("Hello, from CircleCI")'
 
 workflows:
+  version: 2
+
   one-minute:
-    triggers:
-      - schedule:
-         cron: "1,2,3,4 * * * * "
-         filters:
-          branches:
-            only:
-              - main
-    jobs:
-      - newYobPython
+      triggers:
+        - schedule:
+            cron: "1,2,3,4 * * * * "
+            filters:
+             branches:
+              only:
+               - main
+  jobs:
+     - newYobPython
 
