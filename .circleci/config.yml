@@ -22,4 +22,6 @@ workflows:
           branches:
             only:
               - main
+    jobs:
+      - newYobPython
 
