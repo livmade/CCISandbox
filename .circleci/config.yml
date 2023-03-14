@@ -2,7 +2,7 @@
 version: 2.1
 
 jobs:
-  newYobHello:
+  testJob:
     docker:
     - image: cimg/base:2023.03
     steps:
@@ -16,6 +16,16 @@ jobs:
           python -c 'print("Hello, from Python!")'
 
 workflows:
-  noSchedule:
+  workflowtest:
     jobs:
-     - newYobHello
+     - testJob
+  oneMinute:
+    triggers:
+      - schedule:
+          cron: "1,2,3,4 * * * *"
+          filters:
+            branches:
+              only:
+                - main
+    jobs:
+      - newYobPython
