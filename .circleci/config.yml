@@ -2,16 +2,24 @@
 version: 2.1
 
 jobs:
+  newYobHello:
+    docker:
+    - image: cimg/base:2023.03
+    steps:
+      - run: echo "Hello, from CircleCI!"
   newYobPython:
     docker:
     -  image: cimg/python:3.10.5
     steps:
     - run: 
         command: |
-          python -c 'print("Hi")'
+          python -c 'print("Hello, from Python!")'
 
 workflows:
   version: 2
+  noSchedule:
+    jobs:
+     - newYobHello
   oneMinute:
     triggers:
       - schedule:
