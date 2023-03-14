@@ -11,13 +11,10 @@ jobs:
           python -c 'print("Hello, from CircleCI")'
 
 workflows:
-  test-Workflow:
-    jobs:
-      - newYobPython
-  scheduled-15:
+  one-minute:
     triggers:
       - schedule:
-         cron: "1, 2, 3, 4 * * * * "
+         cron: "1,2,3,4 * * * * "
          filter:
           branches:
             only:
