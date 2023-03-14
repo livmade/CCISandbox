@@ -19,13 +19,3 @@ workflows:
   noSchedule:
     jobs:
      - newYobHello
-  oneMinute:
-    triggers:
-      - schedule:
-          cron: "1,2,3,4 * * * *"
-          filters:
-            branches:
-              only:
-                - main
-    jobs:
-      - newYobPython
