@@ -16,7 +16,6 @@ jobs:
           python -c 'print("Hello, from Python!")'
 
 workflows:
-  version: 2
   noSchedule:
     jobs:
      - newYobHello
