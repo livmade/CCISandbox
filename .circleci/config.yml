@@ -1,14 +1,13 @@
-# CircleCI configuration file
 version: 2.1
 
 jobs:
-  testJob:
+  hello-job:
     docker:
-    - image: cimg/base:2023.03
+      - image: cimg/base:2023:03 # the primary container, where your job's commands are run
     steps:
-      - run: echo "Hello, from CircleCI!"
+      - run: echo "hello world" # run the `echo` command
 
 workflows:
-  workflowtest:
+  my-workflow:
     jobs:
-     - testJob
+      - hello-job
