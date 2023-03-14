@@ -15,7 +15,7 @@ workflows:
     triggers:
       - schedule:
          cron: "1,2,3,4 * * * * "
-         filter:
+         filters:
           branches:
             only:
               - main
