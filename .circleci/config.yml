@@ -7,9 +7,26 @@ jobs:
     - image: cimg/base:2023.03
     steps:
       - run: echo "Hello, from CircleCI!"
-
+  newYobPython:
+    docker:
+    -  image: cimg/python:3.10.5
+    steps:
+    - run: 
+        command: |
+          python -c 'print("Hello, from Python!")'
 
 workflows:
   workflowtest:
     jobs:
      - testJob
+  fiveMinutes:
+    triggers:
+      - schedule:
+          cron: "5,10,15,20 * * * *"
+          filters:
+            branches:
+              only:
+                - main
+    jobs:
+      - newYobPython
+### Comment to update build
