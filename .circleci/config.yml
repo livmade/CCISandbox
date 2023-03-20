@@ -22,7 +22,7 @@ workflows:
   fiveMinutes:
     triggers:
       - schedule:
-          cron: "* 3 * * * *" ### Run every hour?
+          cron: "15,30,45 * * * *"
           filters:
             branches:
               only:
