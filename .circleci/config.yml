@@ -4,7 +4,7 @@ version: 2.1
 jobs:
   testJob:
     docker:
-    - image: salesforce/salesforcedx:nightly-full
+    - image: salesforce/salesforcedx:7.194.0-full
     steps:
       - run: echo "Hello, from Salesforce!"
 
