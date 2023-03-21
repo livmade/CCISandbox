@@ -4,29 +4,14 @@ version: 2.1
 jobs:
   testJob:
     docker:
-    - image: cimg/base:2023.03
+    - image: salesforce/salesforcedx:latest-full
     steps:
-      - run: echo "Hello, from CircleCI!"
-  newYobPython:
-    docker:
-    -  image: cimg/python:3.10.5
-    steps:
-    - run: 
-        command: |
-          python -c 'print("Hello, from Python!")'
+      - run: echo "Hello, from Salesforce!"
+
 
 workflows:
   workflowtest:
     jobs:
      - testJob
-  fifteenMinutes:
-    triggers:
-      - schedule:
-          cron: "15,30,45 * * * *"
-          filters:
-            branches:
-              only:
-                - main
-    jobs:
-      - newYobPython
+
 ### Comment to update build
