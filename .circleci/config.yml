@@ -4,7 +4,7 @@ version: 2.1
 jobs:
   testJob:
     docker:
-    - image: salesforce/salesforcedx:latest-full
+    - image: salesforce/salesforcedx:latest-slim
     steps:
       - run: echo "Hello, from Salesforce!"
 
