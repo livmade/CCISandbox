@@ -19,7 +19,7 @@ workflows:
   workflowtest:
     jobs:
      - testJob
-  fiveMinutes:
+  fifteenMinutes:
     triggers:
       - schedule:
           cron: "15,30,45 * * * *"
