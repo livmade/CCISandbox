@@ -24,7 +24,7 @@ jobs:
 workflows:
   androidTest:
     jobs:
-       - android/run-ui-tests:
+       - androidSetup:
           executor:
             name: android/android-machine
             resource-class: xlarge
