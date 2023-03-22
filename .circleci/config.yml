@@ -6,7 +6,13 @@ jobs:
     docker:
     - image: circleci/android@sha256:c83e0dcedeba256d9c41436f61a47e2d4eb95da028e76fd18514f99de44d8c5b
     steps:
-      - run: java -version
+      - run: 
+          command: |
+            sudo apt-get update
+            sudo apt-get install openjdk-8-jdk
+            java -version
+
+          
 
 
 workflows:
