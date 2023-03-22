@@ -25,12 +25,6 @@ workflows:
   androidTest:
     jobs:
        - androidSetup:
-          executor:
-            name: android/android-machine
-            resource-class: xlarge
-            tag: 2022.09.1
-          max-tries: 1
-          no-output-timeout: 30m
           post-run-tests-steps:
             - store_test_results:
                 path: app/build/outputs/androidTest-results/connected
