@@ -25,6 +25,5 @@ workflows:
   androidTest:
     jobs:
       - androidSetup:
-          pre-steps:
-            - android/change-java-version:
-                java-version: 8
+          android/change-java-version:
+            java-version: 8
