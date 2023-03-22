@@ -4,7 +4,7 @@ version: 2.1
 jobs:
   testJob:
     docker:
-    - image: cimg/android:2023.02
+    - image: circleci/android@sha256:c83e0dcedeba256d9c41436f61a47e2d4eb95da028e76fd18514f99de44d8c5b
     steps:
       - run: java -version
 
