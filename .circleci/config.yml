@@ -25,9 +25,6 @@ workflows:
   androidTest:
     jobs:
        - androidSetup:
-          post-run-tests-steps:
-            - store_test_results:
-                path: app/build/outputs/androidTest-results/connected
           pre-steps:
             - android/change-java-version:
                 java-version: 8
