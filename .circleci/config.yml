@@ -8,12 +8,11 @@ jobs:
       name: android/android-machine
       resource-class: large
       tag: 2021.10.1
+    android/change-java-version:
+      java-version: 8
     steps:
       - run: java -version
 workflows:
   androidTest:
     jobs:
-       - androidSetup:
-          pre-steps:
-            - android/change-java-version:
-                java-version: 8
+       - androidSetup
