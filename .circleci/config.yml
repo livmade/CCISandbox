@@ -21,9 +21,9 @@ jobs:
       - android/run-tests
       - android/save-gradle-cache:
           cache-prefix: v1a
-      - android/change-java-version:
-          java-version: 8
-      - run: java -version
+    pre-steps:
+       - android/change-java-version:
+           java-version: 8
 workflows:
   test:
     jobs:
