@@ -31,16 +31,6 @@ workflows:
             tag: 2022.09.1
           max-tries: 1
           no-output-timeout: 30m
-          additional-emulator-args: "-partition-size 1024"
-          matrix:
-            parameters:
-              system-image:
-                - system-images;android-31;default;x86_64
-                - system-images;android-30;default;x86_64
-                - system-images;android-29;default;x86
-                - system-images;android-28;default;x86
-                - system-images;android-27;default;x86
-          name: ui-tests-<<matrix.system-image>>
           post-run-tests-steps:
             - store_test_results:
                 path: app/build/outputs/androidTest-results/connected
