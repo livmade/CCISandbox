@@ -3,7 +3,7 @@ version: 2.1
 orbs:
   android: circleci/android@2.0
 jobs:
-  test:
+  androidSetup:
     executor:
       name: android/android-machine
       resource-class: large
@@ -22,9 +22,9 @@ jobs:
       - android/save-gradle-cache:
           cache-prefix: v1a
 workflows:
-  test:
+  androidTest:
     jobs:
       - test:
           pre-steps:
             - android/change-java-version:
-              java-version: 8
+                java-version: 8
