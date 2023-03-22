@@ -1,23 +1,29 @@
-# CircleCI configuration file
-version: 2.1
-
+version: '2.1'
+orbs:
+  android: circleci/android@2.0
 jobs:
-  testJob:
-    docker:
-    - image: circleci/android@sha256:c83e0dcedeba256d9c41436f61a47e2d4eb95da028e76fd18514f99de44d8c5b
+  test:
+    executor:
+      name: android/android-machine
+      resource-class: large
+      tag: 2021.10.1
     steps:
-      - run: 
-          command: |
-            sudo apt-get update
-            sudo apt-get install openjdk-8-jdk
-            java -version
-
-          
-
-
+      - checkout
+      - android/create-avd:
+          avd-name: myavd
+          install: true
+          system-image: system-images;android-29;default;x86
+      - android/start-emulator:
+          avd-name: myavd
+          no-window: true
+          restore-gradle-cache-prefix: v1a
+      - android/run-tests
+      - android/save-gradle-cache:
+          cache-prefix: v1a
+      - android/change-java-version:
+                java-version: 8
+      - run: java -version
 workflows:
-  workflowtest:
+  test:
     jobs:
-     - testJob
-
-### Comment to update build
+      - test
