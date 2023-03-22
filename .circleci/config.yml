@@ -22,7 +22,7 @@ jobs:
       - android/save-gradle-cache:
           cache-prefix: v1a
       - android/change-java-version:
-                java-version: 8
+          java-version: 8
       - run: java -version
 workflows:
   test:
