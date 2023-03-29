@@ -9,7 +9,7 @@ jobs:
       - run:
           name:  Print pipeline number?
           command: |
-              printf -v PIPE_NUM_STRING "%s" << pipeline.number >>
+              printf << pipeline.number >>
 
 
 
