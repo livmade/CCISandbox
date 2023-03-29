@@ -1,22 +1,22 @@
+# CircleCI configuration file
 version: 2.1
 
-orbs:
-  win: circleci/windows@5.0.0
-
 jobs:
-  build:
-    executor:
-      name: win/default
-      shell: powershell.exe
+  testJob:
+    docker:
+    - image: cimg/base:2023.03
     steps:
-      - checkout
-      - run: systeminfo
       - run:
-          name: "Install imdisk"
-          shell: powershell.exe
+          name: Env Var Print Test
           command: |
-            choco install imdisk
-      - run:
-          name: "Imdisk"
-          command: |
-            imdisk -a -s 512M -m X: -p "/fs:ntfs /q /y"
+              echo "CIRCLE_WORKFLOW_JOB_ID: $CIRCLE_WORKFLOW_JOB_ID"
+              echo "CIRCLE_BUILD_NUM: $CIRCLE_BUILD_NUM"
+              echo "pipeline.number: $pipeline.number"
+
+
+workflows:
+  workflowtest:
+    jobs:
+     - testJob
+
+### Update for today
