@@ -7,11 +7,10 @@ jobs:
     - image: cimg/base:2023.03
     steps:
       - run:
-          name: Env Var Print Test
+          name:  Print pipeline number?
           command: |
-              echo "CIRCLE_WORKFLOW_JOB_ID: $CIRCLE_WORKFLOW_JOB_ID"
-              echo "CIRCLE_BUILD_NUM: $CIRCLE_BUILD_NUM"
-              echo "pipeline.number: $pipeline.number"
+              printf -v PIPE_NUM_STRING "%s" << pipeline.number >>
+
 
 
 workflows:
