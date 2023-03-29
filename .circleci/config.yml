@@ -1,22 +1,13 @@
 # CircleCI configuration file
-version: 2.1
+version: 2.1 
+
+orbs:
+  win: circleci/windows@5.0 
 
 jobs:
-  testJob:
-    docker:
-    - image: cimg/base:2023.03
+  build: 
+    executor: win/default 
     steps:
-      - run:
-          name:  Print pipeline number?
-          command: |
-              echo "pipeline.number:  <<pipeline.number>>"
+      - checkout
+      - run: whoami
 
-
-
-
-workflows:
-  workflowtest:
-    jobs:
-     - testJob
-
-### Update for today
