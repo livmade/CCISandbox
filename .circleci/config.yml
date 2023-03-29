@@ -1,17 +1,22 @@
-# CircleCI configuration file
 version: 2.1
 
+orbs:
+  win: circleci/windows@5.0.0
+
 jobs:
-  testJob:
-    docker:
-    - image: cimg/base:2023.03
+  build:
+    executor:
+      name: win/default
+      shell: powershell.exe
     steps:
-      - run: echo "Hello, from CircleCi!"
-
-
-workflows:
-  workflowtest:
-    jobs:
-     - testJob
-
-### Update for today
+      - checkout
+      - run: systeminfo
+      - run:
+          name: "Install imdisk"
+          shell: powershell.exe
+          command: |
+            choco install imdisk
+      - run:
+          name: "Imdisk"
+          command: |
+            imdisk -a -s 512M -m X: -p "/fs:ntfs /q /y"
