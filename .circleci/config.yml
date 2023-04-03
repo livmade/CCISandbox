@@ -4,12 +4,14 @@ version: 2.1
 jobs:
   testJob:
     docker:
-    - image: cimg/base:2023.03
+      - image: cimg/python:3.9-node
     steps:
+      - checkout
       - run:
-          name:  Print pipeline number?
+          name: poetry self update
           command: |
-              echo "pipeline.number:  <<pipeline.number>> "
+            LC_ALL=
+            poetry self update
 
 
 
