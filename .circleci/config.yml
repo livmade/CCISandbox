@@ -10,7 +10,6 @@ jobs:
       - run:
           name: poetry self update
           command: |
-            LC_ALL=
             poetry self update
 
 
