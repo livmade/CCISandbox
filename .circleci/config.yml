@@ -4,13 +4,12 @@ version: 2.1
 jobs:
   testJob:
     docker:
-      - image: cimg/python:3.9-node
+    - image: cimg/base:2023.03
     steps:
-      - checkout
       - run:
-          name: poetry self update
+          name:  Print pipeline number?
           command: |
-            poetry self update
+              echo "pipeline.number:  <<pipeline.number>>"
 
 
 
