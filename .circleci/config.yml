@@ -19,5 +19,5 @@ workflows:
     jobs:
      - testJob
 
-### Update for today
+### Update
 
