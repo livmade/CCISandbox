@@ -6,18 +6,26 @@ jobs:
     docker:
     - image: cimg/base:2023.03
     steps:
-      - run:
-          name:  Print pipeline number?
-          command: |
-              echo "pipeline.number:  <<pipeline.number>>"
-
-
-
+      - run: echo "Hello, from CircleCI!"
+  newYobPython:
+    docker:
+    -  image: cimg/python:3.10.5
+    steps:
+    - run: 
+        command: |
+          python -c 'print("Hello, from Python!")'
 
 workflows:
   workflowtest:
     jobs:
      - testJob
-
-### Update
-
+  fiveMinutes:
+    triggers:
+      - schedule:
+          cron: "15,30,45 * * * *"
+          filters:
+            branches:
+              only:
+                - main
+    jobs:
+      - newYobPython
