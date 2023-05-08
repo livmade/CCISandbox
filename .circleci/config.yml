@@ -8,7 +8,7 @@ jobs:
     steps:
       - run: 
           command:  |
-            sudo ulimit -u unlimited`
+            sudo ulimit -u unlimited
             echo "Hello, from CircleCI!"
 
 
