@@ -9,7 +9,7 @@ jobs:
       - run:
           name:  Print Workflow number?
           command: |
-              echo "Workflow Number:  $CIRCLE_WORKFLOW_ID"
+              echo "pipeline.number:  <<pipeline.number>>"
 
 
 
