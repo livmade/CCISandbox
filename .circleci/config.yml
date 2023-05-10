@@ -9,8 +9,8 @@ jobs:
       - run:
           name:  Print Workflow number?
           command: |
-              echo "pipeline.number:  <<pipeline.number>>"
-              echo "export pipeline.number:  <<pipeline.number>>" >>$BASH_ENV
+              echo "CCI_MAIN_BRANCH: $CIRCLE_BRANCH"
+              echo "export CCI_MAIN_BRANCH='$CIRCLE_BRANCH'" >>$BASH_ENV
 
 
 
