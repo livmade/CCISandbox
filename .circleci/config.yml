@@ -6,10 +6,10 @@ jobs:
     docker:
     - image: cimg/base:2023.03
     environment:
-            PIPELINE_NUMBER: << pipeline.number >>
+       PIPELINE_NUMBER: << pipeline.number >>
     steps:
       - run:
-          name:  Print Workflow number?
+          name:  Print Pipeline number?
           command: |
               echo "pipeline.number: $PIPELINE_NUMBER"
 
