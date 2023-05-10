@@ -10,6 +10,7 @@ jobs:
           name:  Print Workflow number?
           command: |
               echo "pipeline.number:  <<pipeline.number>>"
+              echo "export pipeline.number:  <<pipeline.number>>" >>$BASH_ENV
 
 
 
