@@ -6,7 +6,7 @@ orbs:
   # to automatically accept non-breaking improvements.
   msix: circleci/microsoft-msix@1.1
   # Gives us easy access to Windows execution environments.
-  win: circleci/windows@2.4.0
+  win: circleci/windows@5.0.0
 jobs:
   using-sln:
     executor:
