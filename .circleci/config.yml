@@ -1,22 +1,17 @@
-version: 2.1
+version: 2.1 # Use version 2.1 to enable Orb usage.
 
 orbs:
-  msix: circleci/microsoft-msix@1.0
-  win: circleci/windows@5.0.0
-jobs:
-  using-sln:
-    executor:
-      name: win/default
-    steps:
-      - checkout
-      - msix/pack:
-          using-sln: false
-          mapping-file: mapping.txt
-          manifest-file: appxmanifest.xml
-      - msix/sign:
-          import-cert: true
+  win: circleci/windows@5.0 # The Windows orb gives you everything you need to start using the Windows executor.
 
-workflows:
-  build:
-    jobs:
-      - using-sln
+jobs:
+  build: # name of your job
+    executor:
+      name: win/default # executor type
+      size: medium # can be medium, large, xlarge, 2xlarge
+
+    steps:
+      # Commands are run in a Windows virtual machine environment
+      - checkout
+      - run: |
+          command: where MakeAppx.exe
+          shell: cmd.exe
