@@ -1,25 +1,23 @@
-# CircleCI configuration file
+# .circleci/config.yml
 version: 2.1
 
+orbs:
+  # We pin the minor version but leave out the patch version
+  # to automatically accept non-breaking improvements.
+  msix: circleci/microsoft-msix@1.1
+  # Gives us easy access to Windows execution environments.
+  win: circleci/windows@2.4.0
 jobs:
-  testJob:
-    docker:
-    - image: cimg/base:2023.03
-    environment:
-       PIPELINE_NUMBER: << pipeline.number >>
+  using-sln:
+    executor:
+      name: win/default
+      size: medium
+      shell: cmd.exe
     steps:
-      - run:
-          name:  Print Workflow number?
-          command: |
-              echo "pipeline.number: $PIPELINE_NUMBER"
-
-
-
-#um hello?
-          
-
+      - checkout
+      - msix/pack
 
 workflows:
-  workflowtest:
+  demo:
     jobs:
-     - testJob
+      - using-sln
