@@ -1,11 +1,7 @@
-# .circleci/config.yml
 version: 2.1
 
 orbs:
-  # We pin the minor version but leave out the patch version
-  # to automatically accept non-breaking improvements.
-  msix: circleci/microsoft-msix@1.1
-  # Gives us easy access to Windows execution environments.
+  msix: circleci/microsoft-msix@1.0
   win: circleci/windows@5.0.0
 jobs:
   using-sln:
@@ -13,9 +9,14 @@ jobs:
       name: win/default
     steps:
       - checkout
-      - msix/pack
+      - msix/pack:
+          using-sln: false
+          mapping-file: mapping.txt
+          manifest-file: appxmanifest.xml
+      - msix/sign:
+          import-cert: true
 
 workflows:
-  demo:
+  build:
     jobs:
       - using-sln
