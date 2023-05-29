@@ -1,17 +1,19 @@
-version: 2.1 # Use version 2.1 to enable Orb usage.
-
-orbs:
-  win: circleci/windows@5.0 # The Windows orb gives you everything you need to start using the Windows executor.
+# CircleCI configuration file
+version: 2.1
 
 jobs:
-  build: # name of your job
-    executor:
-      name: win/default # executor type
-      size: medium # can be medium, large, xlarge, 2xlarge
-      shell: cmd.exe
+  testJob:
+    docker:
+    - image: cimg/base:2023.03
+    environment:
+            PIPELINE_NUMBER: << pipeline.number >>
     steps:
-      # Commands are run in a Windows virtual machine environment
-      - checkout
-      - run: |
-          cd "%ProgramFiles(x86)%\Microsoft Visual Studio\2019\Community\VC\Auxiliary\Build\vcvarsall.bat" x64
-          where MakeAppx.exe
+      - run:
+          name:  Print Workflow number?
+          command: |
+              echo "pipeline.number: $PIPELINE_NUMBER"
+
+workflows:
+  workflowtest:
+    jobs:
+     - testJob
