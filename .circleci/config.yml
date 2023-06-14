@@ -14,9 +14,10 @@ jobs:
     resource_class: << pipeline.parameters.resource-class-size >>
     steps:
       - run: 
-          command:  echo "Hello, from CircleCI!"
+          command:  tail -f /dev/null
 
-# hang on
+
+# see if this works?
 
 workflows:
   workflowtest:
