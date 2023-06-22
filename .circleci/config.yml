@@ -9,15 +9,14 @@ parameters:
 
 jobs:
   testJob:
-    docker:
-    - image: cimg/base:2023.03
-    resource_class: << pipeline.parameters.resource-class-size >>
+    machine:
+      image: ubuntu-2004:2023.04.2
     steps:
-      - run: 
-          command: timeout 10s tail -f /dev/null
+      - checkout
+      # Whatever you want to do
+      - run: echo "Hello, from CircleCI!"
 
-
-# see if this works?
+ 
 
 workflows:
   workflowtest:
