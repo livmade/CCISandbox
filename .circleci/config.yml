@@ -9,14 +9,14 @@ parameters:
 
 jobs:
   testJob:
-    machine:
-      image: ubuntu-2004:2023.04.2
+    docker:
+    - image: ghcr.io/cirruslabs/flutter:3.10.5
     steps:
       - checkout
       # Whatever you want to do
       - run: echo "Hello, from CircleCI!"
 
- 
+
 
 workflows:
   workflowtest:
