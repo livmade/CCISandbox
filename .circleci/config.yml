@@ -10,15 +10,17 @@ parameters:
 jobs:
   testJob:
     docker:
-    - image: circleci/php:8.0-apache-node-browsers
+    - image: cimg/python:3.9.16
     steps:
       - checkout
       # Whatever you want to do
-      - run: sudo apt update
-      - run: sudo apt install lsb-release ca-certificates apt-transport-https software-properties-common -y
-      - run: sudo add-apt-repository ppa:ondrej/php
-      - run: sudo apt install php8.1.1
-      - run: sudo apt install php8.1common php8.1cli
+      - run:
+          name: installed version verification
+          shell: bash
+          command: |
+            py -3.9 -m venv venv39
+            source ./venv39/Scripts/activate
+            python --version
 
 workflows:
   workflowtest:
