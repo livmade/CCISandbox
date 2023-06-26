@@ -15,9 +15,6 @@ jobs:
       - checkout
       # Whatever you want to do
       - run: echo "Hello, from CircleCI!"
-      - run: image ls
-
-
 
 workflows:
   workflowtest:
