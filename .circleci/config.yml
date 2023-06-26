@@ -10,7 +10,7 @@ parameters:
 jobs:
   testJob:
     docker:
-    - image: ghcr.io/cirruslabs/flutter:3.10.5
+    - image: circleci/php:8.0-apache-node-browsers
     steps:
       - checkout
       # Whatever you want to do
