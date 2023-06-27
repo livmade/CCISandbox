@@ -1,28 +1,18 @@
 # CircleCI configuration file
 version: 2.1
 
-parameters:
-  resource-class-size:
-    type: string
-    default: "medium"
-
+orbs:
+  win: circleci/windows@5.0 # The Windows orb gives you everything you need to start using the Windows executor.
 
 jobs:
-  testJob:
-    docker:
-    - image: cimg/python:3.9.16
+  build: # name of your job
+    executor: win/default # executor type
+
     steps:
       - checkout
-      # Whatever you want to do
-      - run:
-          name: installed version verification
-          shell: bash
-          command: |
-            py -3.9 -m venv venv39
-            source ./venv39/Scripts/activate
-            python --version
+      - run: whoami
 
 workflows:
-  workflowtest:
+  my-workflow:
     jobs:
-     - testJob
+      - build
