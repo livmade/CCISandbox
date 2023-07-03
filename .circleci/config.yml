@@ -1,18 +1,17 @@
-# CircleCI configuration file
 version: 2.1
 
 orbs:
-  win: circleci/windows@5.0 # The Windows orb gives you everything you need to start using the Windows executor.
-
+  android: circleci/android@2.2.0
 jobs:
-  build: # name of your job
-    executor: win/default # executor type
-
+  androidSetup:
+    executor:
+      name: android/android-machine
+      resource-class: large
+      tag: 2021.10.1
     steps:
-      - checkout
-      - run: whoami
-
+      - android/change-java-version:
+         java-version: 8
 workflows:
-  my-workflow:
+  androidTest:
     jobs:
-      - build
+       - androidSetup
