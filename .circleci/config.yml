@@ -11,5 +11,5 @@ jobs:
       # Commands are run in a Windows virtual machine environment
       - checkout
       - run: 
-          command: (Get-Item "C:\Program Files (x86)\Microsoft\Edge Dev\Application\msedge.exe").VersionInfo.FileVersion
+          command: wmic datafile where name="C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe" get Version /value
           shell: powershell.exe
