@@ -11,5 +11,7 @@ jobs:
       # Commands are run in a Windows virtual machine environment
       - checkout
       - run: 
-          command: Get-AppxPackage -Name Microsoft.MicrosoftEdge | Foreach Version
+          command: |
+            $EdgeExe = Get-ItemPropertyValue 'HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\msedge.exe' "(default)"
+            $version = (Get-Item $EdgeExe).VersionInfo.ProductVersion
           shell: powershell.exe
