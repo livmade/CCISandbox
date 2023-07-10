@@ -11,5 +11,5 @@ jobs:
       # Commands are run in a Windows virtual machine environment
       - checkout
       - run: 
-          command: (Get-ItemProperty -Path HKCU:\Software\Microsoft\Edge\BLBeacon -Name version).version
+          command: (Get-Item "C:\Program Files (x86)\Microsoft\Edge Dev\Application\msedge.exe").VersionInfo.FileVersion
           shell: powershell.exe
