@@ -1,17 +1,15 @@
-version: 2.1
+version: 2.1 # Use version 2.1 to enable Orb usage.
 
 orbs:
-  android: circleci/android@2.2.0
+  win: circleci/windows@5.0 # The Windows orb gives you everything you need to start using the Windows executor.
+
 jobs:
-  androidSetup:
-    executor:
-      name: android/android-machine
-      resource-class: large
-      tag: 2021.10.1
+  build: # name of your job
+    executor: win/default # executor type
+
     steps:
-      - android/change-java-version:
-         java-version: 8
-workflows:
-  androidTest:
-    jobs:
-       - androidSetup
+      # Commands are run in a Windows virtual machine environment
+      - checkout
+      - run: 
+          command: (Get-ItemProperty -Path HKCU:\Software\Microsoft\Edge\BLBeacon -Name version).version
+          shell: powershell.exe
