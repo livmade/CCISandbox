@@ -16,3 +16,6 @@ jobs:
             $version = (Get-Item $EdgeExe).VersionInfo.ProductVersion
             echo $version
           shell: powershell.exe
+
+
+#how about this time?
