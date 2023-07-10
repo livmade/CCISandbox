@@ -13,5 +13,5 @@ jobs:
       - run: 
           command: |
             $EdgeExe = Get-ItemPropertyValue 'HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\msedge.exe' "(default)"
-            $version = (Get-Item $EdgeExe).VersionInfo.ProductVersion
+            echo $EdgeExe
           shell: powershell.exe
