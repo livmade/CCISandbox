@@ -1,21 +1,24 @@
-version: 2.1 # Use version 2.1 to enable Orb usage.
+# CircleCI configuration file
+version: 2.1
 
-orbs:
-  win: circleci/windows@5.0 # The Windows orb gives you everything you need to start using the Windows executor.
+parameters:
+  resource-class-size:
+    type: string
+    default: "medium"
+
 
 jobs:
-  build: # name of your job
-    executor: win/server-2022 # executor type
-
+  testJob:
+    docker:
+    - image: cimg/base:2023.03
+    resource_class: << pipeline.parameters.resource-class-size >>
     steps:
-      # Commands are run in a Windows virtual machine environment
-      - checkout
       - run: 
-          command: |
-            $EdgeExe = Get-ItemPropertyValue 'HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\msedge.exe' "(default)"
-            $version = (Get-Item $EdgeExe).VersionInfo.ProductVersion
-            echo $version
-          shell: powershell.exe
+          command:  echo "Hello, from CircleCI"
 
+          
 
-#how about this time
+workflows:
+  workflowtest:
+    jobs:
+     - testJob
