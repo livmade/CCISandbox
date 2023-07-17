@@ -1,24 +1,20 @@
-# CircleCI configuration file
-version: 2.1
+version: 2.1 # Use version 2.1 to enable Orb usage.
 
-parameters:
-  resource-class-size:
-    type: string
-    default: "medium"
-
+orbs:
+  win: circleci/windows@5.0 # The Windows orb gives you everything you need to start using the Windows executor.
 
 jobs:
-  testJob:
-    docker:
-    - image: cimg/base:2023.03
-    resource_class: << pipeline.parameters.resource-class-size >>
+  build: # name of your job
+    executor: win/default # executor type
+
     steps:
-      - run: 
-          command:  echo "Hello, from CircleCI"
-
-          
-
-workflows:
-  workflowtest:
-    jobs:
-     - testJob
+      # Commands are run in a Windows virtual machine environment
+      - checkout
+      - run: Write-Host 'Hello, Windows'
+      - run:    
+          name: installed version verification
+          shell: bash
+          command: |
+            py -3.9 -m venv venv39
+            source ./venv39/Scripts/activate
+            python --version
