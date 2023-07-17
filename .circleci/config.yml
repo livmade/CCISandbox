@@ -10,7 +10,4 @@ jobs:
     steps:
       # Commands are run in a Windows virtual machine environment
       - checkout
-      - run: Write-Host 'Hello, Windows'
-      - run: choco feature enable -n=allowGlobalConfirmation
-      - run: choco install python --version=3.9.11 --allow-downgrade
-      - run: python --version
+      - run: Get-ChildItem
