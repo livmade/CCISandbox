@@ -11,10 +11,5 @@ jobs:
       # Commands are run in a Windows virtual machine environment
       - checkout
       - run: Write-Host 'Hello, Windows'
-      - run:    
-          name: installed version verification
-          shell: bash
-          command: |
-            py -3.9 -m venv venv39
-            source ./venv39/Scripts/activate
-            python --version
+      - run: choco install python --version=3.9.11
+      - run: python --version
