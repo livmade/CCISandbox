@@ -5,7 +5,8 @@ orbs:
 
 jobs:
   build: # name of your job
-    executor: win/default # executor type
+    executor: win/server-2019 # executor type
+    shell: powershell.exe
 
     steps:
       # Commands are run in a Windows virtual machine environment
@@ -14,4 +15,4 @@ jobs:
           command: |
             docker info
             winpty docker run -it mcr.microsoft.com/windows/nanoserver:ltsc2022 cmd.exe
-          shell: bash.exe
+          shell: powershell.exe
