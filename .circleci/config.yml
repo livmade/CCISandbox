@@ -7,13 +7,13 @@ jobs:
   build:
     executor:
       name: win/default
-      shell: powershell.exe
+      shell: bash.exe
     steps:
       - checkout
       - run: systeminfo
       - run:
           name: "Check docker"
-          shell: powershell.exe
+          shell: bash.exe
           command: |
             docker info
             docker run -it mcr.microsoft.com/windows/nanoserver:ltsc2022 cmd.exe
