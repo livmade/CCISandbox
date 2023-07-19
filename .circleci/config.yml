@@ -14,7 +14,7 @@ jobs:
       - run: systeminfo
       - run:
           name: "Check docker"
-          shell: bash.exe
+          shell: powershell.exe
           command: |
             docker info
-            winpty docker.exe run -it mcr.microsoft.com/windows/nanoserver:ltsc2022 cmd.exe
+            winpty docker.exe run -i mcr.microsoft.com/windows/nanoserver:ltsc2022 cmd.exe
