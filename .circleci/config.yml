@@ -6,14 +6,14 @@ orbs:
 jobs:
   build:
     executor:
-      name: win/default
-      shell: bash.exe
+      name: win/server-2022
+      shell: powershell.exe
     steps:
       - checkout
       - run: systeminfo
       - run:
           name: "Check docker"
-          shell: bash.exe
+          shell: powershell.exe
           command: |
             docker info
             docker run -it mcr.microsoft.com/windows/nanoserver:ltsc2022 cmd.exe
