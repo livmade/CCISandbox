@@ -8,12 +8,10 @@ jobs:
     executor:
       name: win/server-2022
       version: "2023.07.1"
-      shell: powershell.exe
     steps:
       - checkout
       - run: systeminfo
       - run:
-          name: "Check docker"
           command: |
             docker info
             docker run -it mcr.microsoft.com/windows/nanoserver:ltsc2022 cmd.exe
