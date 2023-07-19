@@ -17,4 +17,4 @@ jobs:
           shell: powershell.exe
           command: |
             docker info
-            docker.exe run -i mcr.microsoft.com/windows/nanoserver:ltsc2022 cmd.exe
+            docker.exe run -it mcr.microsoft.com/windows/nanoserver:ltsc2022 cmd.exe
