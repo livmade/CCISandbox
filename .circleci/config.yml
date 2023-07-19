@@ -12,9 +12,5 @@ jobs:
     steps:
       - checkout
       - run: systeminfo
-      - run:
-          name: "Check docker"
-          shell: powershell.exe
-          command: |
-            docker info
-            winpty -Xallow-non-tty -Xplain docker run -it mcr.microsoft.com/windows/nanoserver:ltsc2022 cmd.exe
+      - run: docker info
+      - run: docker run -it mcr.microsoft.com/windows/nanoserver:ltsc2022 cmd.exe
