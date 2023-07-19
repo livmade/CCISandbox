@@ -17,4 +17,4 @@ jobs:
           shell: powershell.exe
           command: |
             docker info
-            winpty docker.exe run -i mcr.microsoft.com/windows/nanoserver:ltsc2022 cmd.exe
+            winpty -Xallow-non-tty docker.exe run -i mcr.microsoft.com/windows/nanoserver:ltsc2022 cmd.exe
