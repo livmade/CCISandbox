@@ -6,7 +6,6 @@ orbs:
 jobs:
   build: # name of your job
     executor: win/server-2019 # executor type
-    shell: powershell.exe
 
     steps:
       # Commands are run in a Windows virtual machine environment
