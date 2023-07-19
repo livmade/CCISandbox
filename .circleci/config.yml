@@ -6,9 +6,9 @@ orbs:
 jobs:
   build:
     executor:
-        name: windows/default
+        name: win/default
         shell: powershell.exe
-        version: "2023.04.1"
+        version: 2023.04.1
     steps:
       - checkout
       - run: systeminfo
