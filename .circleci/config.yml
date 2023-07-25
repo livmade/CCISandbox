@@ -1,24 +1,19 @@
-# CircleCI configuration file
 version: 2.1
 
-parameters:
-  resource-class-size:
-    type: string
-    default: "medium"
-
+orbs:
+  win: circleci/windows@5.0
 
 jobs:
-  testJob:
-    docker:
-    - image: cimg/base:2023.03
-    resource_class: << pipeline.parameters.resource-class-size >>
+  build:
+    executor:
+        name: win/default
+        shell: powershell.exe
+        version: 2023.04.1
     steps:
-      - run: 
-          command:  echo "Hello, from CircleCI"
-
-          
-
-workflows:
-  workflowtest:
-    jobs:
-     - testJob
+      - checkout
+      - run:
+          name: create user
+          shell: powershell.exe
+          command: |
+            New-Localuser -Name "TestUser" -NoPassword
+            Get-LocalUser | Select *
