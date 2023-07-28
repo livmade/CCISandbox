@@ -5,18 +5,13 @@ orbs:
 
 jobs:
   build:
-    executor:
-        name: win/default
-        shell: powershell.exe
-        version: 2023.04.1
+    docker:
+      - image: cimg/android:2023.07.1
     steps:
       - checkout
-      - run:
-          name: create user
-          shell: powershell.exe
-          command: |
-            New-Localuser -Name "TestUser" -NoPassword
-            Get-LocalUser
+      - run: ./gradlew androidDependencies
+      - run: ./gradlew lint test
+      - run: echo "Hello"
 
 workflows:
   my-workflow:
