@@ -16,4 +16,9 @@ jobs:
           shell: powershell.exe
           command: |
             New-Localuser -Name "TestUser" -NoPassword
-            Get-LocalUser | Select *
+            Get-LocalUser
+
+workflows:
+  my-workflow:
+    jobs:
+      - build
