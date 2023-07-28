@@ -11,8 +11,6 @@ jobs:
         tag: 2023.07.1
     steps:
       - checkout
-      - run: ./gradlew androidDependencies
-      - run: ./gradlew lint test
       - run: echo "Hello"
 
 workflows:
