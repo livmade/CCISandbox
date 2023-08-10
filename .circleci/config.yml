@@ -1,19 +1,13 @@
-version: 2.1
+version: 2.1 # Use version 2.1 to enable Orb usage.
 
 orbs:
-  android: circleci/android@2.3.0
+  win: circleci/windows@5.0 # The Windows orb gives you everything you need to start using the Windows executor.
 
 jobs:
-  build:
-    executor: 
-        name: android/android-machine
-        resource-class: large
-        tag: 2023.07.1
-    steps:
-      - checkout
-      - run: echo "Hello"
+  build: # name of your job
+    executor: win/server-2022 # executor type
 
-workflows:
-  my-workflow:
-    jobs:
-      - build
+    steps:
+      # Commands are run in a Windows virtual machine environment
+      - checkout
+      - run: node -v
