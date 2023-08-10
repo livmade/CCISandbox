@@ -3,9 +3,14 @@ version: 2.1 # Use version 2.1 to enable Orb usage.
 orbs:
   win: circleci/windows@5.0 # The Windows orb gives you everything you need to start using the Windows executor.
 
+machine:
+  image: "windows-server-2022-gui:2023.07.1"
+
 jobs:
-  build: # name of your job
-    executor: win/server-2022 # executor type
+  build:
+    executor:
+      name: win/server-2022
+      version: "2023.07.1"
 
     steps:
       # Commands are run in a Windows virtual machine environment
