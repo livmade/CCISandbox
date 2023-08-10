@@ -4,13 +4,13 @@ orbs:
   win: circleci/windows@5.0 # The Windows orb gives you everything you need to start using the Windows executor.
 
 machine:
-  image: "windows-server-2022-gui:2023.07.1"
+  image: "windows-server-2022-gui:edge"
 
 jobs:
   build:
     executor:
       name: win/server-2022
-      version: "2023.07.1"
+
 
     steps:
       # Commands are run in a Windows virtual machine environment
