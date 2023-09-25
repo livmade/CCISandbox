@@ -16,5 +16,5 @@ jobs:
       # Commands are run in a Windows virtual machine environment
       - checkout
       - run: whoami
-      - run: echo "…"
+      - run: echo "I am who I am"
       
