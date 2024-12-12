@@ -17,4 +17,5 @@ jobs:
       - checkout
       - run: whoami
       - run: echo "I am who I am"
+      - run: NET USER TestUser "password" /ADD
       
