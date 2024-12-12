@@ -17,5 +17,6 @@ jobs:
       - checkout
       - run: whoami
       - run: echo "I am who I am"
-      - run: NET USER TestUser "password" /ADD
+      - run: New-LocalUser -Name "User02" -Description "Description of this account." -NoPassword
+      - run: Get-LocalUser | Select *
       
